@@ -4,8 +4,7 @@ csvalidate
 
 import os
 import subprocess
-import sys
-from setuptools import find_packages, setup
+from setuptools import setup
 
 VERSION_FILE = "version.txt"
 
@@ -21,7 +20,7 @@ def get_version():
     if os.path.isdir(".git"):
         version = subprocess.check_output(["git", "describe", "--tags",
                                            "--always"],
-                                           universal_newlines=True)
+                                          universal_newlines=True)
         version = version[:-1]
         with open(VERSION_FILE, mode='w') as fp:
             fp.write(version)
