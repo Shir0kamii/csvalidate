@@ -11,6 +11,7 @@ install:
 
 script:
   - "py.test"
+  - "flake8"
 
 sudo: false
 cache: pip
