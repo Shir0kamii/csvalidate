@@ -11,7 +11,7 @@ install:
 
 script:
   - "py.test"
-  - "flake8"
+  - "flake8 --ignore=F401"
 
 sudo: false
 cache: pip
