@@ -39,6 +39,5 @@ def readers(request):
 
 def test_compatible_ReadDict(readers):
     original, validated = readers
-    print(original, validated)
     for original_obj, validated_obj in zip(*readers):
         assert original_obj == validated_obj
