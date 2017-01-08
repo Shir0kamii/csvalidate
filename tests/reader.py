@@ -5,8 +5,6 @@ import pytest
 
 from csvalidate import ValidatedReader
 
-SAMPLE_FILENAME = "files/sample.csv"
-
 
 class ReaderFixture(object):
 
