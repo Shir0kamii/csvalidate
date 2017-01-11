@@ -2,10 +2,12 @@ from csv import DictReader
 import os
 
 import pytest
+from marshmallow.exceptions import ValidationError
 
 from csvalidate import ValidatedReader
 
 from tests.common import file_schemas, files
+from tests.schemas import TableIdName
 
 
 class ReaderFixture(object):
@@ -52,3 +54,10 @@ def test_compatible_ReadDict(readers):
 def test_output_dict(validated_reader):
     for d in validated_reader:
         assert isinstance(d, dict)
+
+
+def test_exception_bad_id():
+    filename = "files/bad_id.csv"
+    with ReaderFixture(ValidatedReader, filename, TableIdName) as reader:
+        with pytest.raises(ValidationError):
+            print(list(reader))
