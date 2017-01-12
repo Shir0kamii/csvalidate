@@ -1,4 +1,4 @@
-from tests.schemas import TableIdName
+from .schemas import TableIdName
 
 file_schemas = [
     ("files/sample.csv", None),

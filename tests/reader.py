@@ -6,8 +6,8 @@ from marshmallow.exceptions import ValidationError
 
 from csvalidate import ValidatedReader
 
-from tests.common import file_schemas, files
-from tests.schemas import TableIdName
+from .common import file_schemas, files
+from .schemas import TableIdName
 
 
 class ReaderFixture(object):
