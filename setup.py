@@ -3,10 +3,7 @@ csvalidate
 """
 
 import os
-import subprocess
 from setuptools import setup
-
-VERSION_FILE = "version.txt"
 
 
 def read(fname):
@@ -16,22 +13,9 @@ def read(fname):
     return content
 
 
-def get_version():
-    if os.path.isdir(".git"):
-        version = subprocess.check_output(["git", "describe", "--tags",
-                                           "--always"],
-                                          universal_newlines=True)
-        version = version[:-1]
-        with open(VERSION_FILE, mode='w') as fp:
-            fp.write(version)
-    else:
-        version = read(VERSION_FILE)
-    return version
-
-
 setup(
     name="csvalidate",
-    version=get_version(),
+    version="0.1.0",
     author="Shir0kamii",
     author_email="shir0kamii@gmail.com",
     description="CSV reader and writer with validation",
