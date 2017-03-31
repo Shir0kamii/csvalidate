@@ -60,3 +60,10 @@ def test_correct_output(validated_writer):
 def test_exception_bad_id(validated_writer):
     with pytest.raises(ValidationError):
         validated_writer.writerow({"id": "WHAT", "name": "Life"})
+
+
+def test_can_infere_fieldnames():
+    ValidatedWriter.schema = TableIdName
+    f = open("/tmp/whatever", 'w')
+    ValidatedWriter(f)  # Raise an exception if the test fail
+    ValidatedWriter.schema = None
