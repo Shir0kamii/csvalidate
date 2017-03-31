@@ -50,6 +50,13 @@ def test_compatible_DictWriter(writers):
     assert f1.read() == f2.read()
 
 
+def test_correct_output(validated_writer):
+    d = {"id": 42, "name": "Life"}
+    validated_writer.writerow(d)
+    f1 = open("/tmp/original.txt")
+    assert f1.read().strip() == "42,Life"
+
+
 def test_exception_bad_id(validated_writer):
     with pytest.raises(ValidationError):
         validated_writer.writerow({"id": "WHAT", "name": "Life"})
