@@ -50,12 +50,6 @@ def test_compatible_DictWriter(writers):
     assert f1.read() == f2.read()
 
 
-def test_output_bytes(validated_writer):
-    d = {"id": 42, "name": "Life"}
-    min_expected_length = sum(map(lambda v: len(str(v)), d.values()))
-    assert validated_writer.writerow(d) >= min_expected_length
-
-
 def test_exception_bad_id(validated_writer):
     with pytest.raises(ValidationError):
         validated_writer.writerow({"id": "WHAT", "name": "Life"})
