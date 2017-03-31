@@ -1,5 +1,4 @@
 import pytest
-import os
 
 from marshmallow.exceptions import ValidationError
 
@@ -37,7 +36,8 @@ def writers():
 
 @pytest.fixture
 def validated_writer():
-    with WriterFixture(ValidatedWriter, "/tmp/validated.txt", TableIdName) as _validated:
+    with WriterFixture(ValidatedWriter, "/tmp/validated.txt",
+                       TableIdName) as _validated:
         yield _validated
 
 
@@ -50,12 +50,20 @@ def test_compatible_DictWriter(writers):
     assert f1.read() == f2.read()
 
 
-def test_output_bytes(validated_writer):
+def test_correct_output(validated_writer):
     d = {"id": 42, "name": "Life"}
-    min_expected_length = sum(map(lambda v: len(str(v)), d.values()))
-    assert validated_writer.writerow(d) >= min_expected_length
+    validated_writer.writerow(d)
+    f1 = open("/tmp/original.txt")
+    assert f1.read().strip() == "42,Life"
 
 
 def test_exception_bad_id(validated_writer):
     with pytest.raises(ValidationError):
         validated_writer.writerow({"id": "WHAT", "name": "Life"})
+
+
+def test_can_infere_fieldnames():
+    ValidatedWriter.schema = TableIdName
+    f = open("/tmp/whatever", 'w')
+    ValidatedWriter(f)  # Raise an exception if the test fail
+    ValidatedWriter.schema = None
