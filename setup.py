@@ -15,7 +15,7 @@ def read(fname):
 
 setup(
     name="csvalidate",
-    version="0.2.0",
+    version="1.0.0",
     author="Shir0kamii",
     author_email="shir0kamii@gmail.com",
     description="CSV reader and writer with validation",
