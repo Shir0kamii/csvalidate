@@ -15,7 +15,7 @@ class ValidatedWriter(DictWriter):
         if self.schema:
             data, errors = self.schema.dump(rowdict)
             if errors:
-                if any(k != v for k,v in rowdict.items()):
+                if any(k != v for k, v in rowdict.items()):
                     raise ValidationError(errors, data=data)
             else:
                 rowdict = data

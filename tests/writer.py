@@ -1,5 +1,4 @@
 import pytest
-import os
 
 from marshmallow.exceptions import ValidationError
 
@@ -37,7 +36,8 @@ def writers():
 
 @pytest.fixture
 def validated_writer():
-    with WriterFixture(ValidatedWriter, "/tmp/validated.txt", TableIdName) as _validated:
+    with WriterFixture(ValidatedWriter, "/tmp/validated.txt",
+                       TableIdName) as _validated:
         yield _validated
 
 
