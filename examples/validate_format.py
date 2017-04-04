@@ -9,9 +9,7 @@ class IdName(Schema):
     name = String()
 
 
-class TableReader(ValidatedReader):
-    schema = IdName()
-
+TableReader = ValidatedReader.from_schema(IdName())
 
 f = open("/tmp/unsure_about_validity.csv")
 reader = TableReader(f)
