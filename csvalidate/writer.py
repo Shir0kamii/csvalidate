@@ -20,3 +20,11 @@ class ValidatedWriter(DictWriter):
             else:
                 rowdict = data
         return DictWriter.writerow(self, rowdict)
+
+    @classmethod
+    def from_schema(cls, schema, name=None):
+        return type(
+            name if name is not None else "Writer",
+            (cls, object),
+            {"schema": schema}
+        )

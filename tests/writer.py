@@ -67,3 +67,8 @@ def test_can_infere_fieldnames():
     f = open("/tmp/whatever", 'w')
     ValidatedWriter(f)  # Raise an exception if the test fail
     ValidatedWriter.schema = None
+
+
+def test_from_schema():
+    writer = ValidatedWriter.from_schema(TableIdName)
+    assert writer.schema is TableIdName

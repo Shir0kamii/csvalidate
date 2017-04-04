@@ -19,3 +19,11 @@ class ValidatedReader(DictReader):
         if not hasattr(DictReader, "__next__"):
             DictReader.__next__ = DictReader.next
         return self.__next__()
+
+    @classmethod
+    def from_schema(cls, schema, name=None):
+        return type(
+            name if name is not None else "Reader",
+            (cls, object),
+            {"schema": schema}
+        )

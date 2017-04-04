@@ -61,3 +61,8 @@ def test_exception_bad_id():
     with ReaderFixture(ValidatedReader, filename, TableIdName) as reader:
         with pytest.raises(ValidationError):
             print(list(reader))
+
+
+def test_from_schema():
+    reader = ValidatedReader.from_schema(TableIdName)
+    assert reader.schema is TableIdName
