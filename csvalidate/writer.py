@@ -21,6 +21,10 @@ class ValidatedWriter(DictWriter):
                 rowdict = data
         return DictWriter.writerow(self, rowdict)
 
+    def writeheader(self):
+        header = dict(zip(self.fieldnames, self.fieldnames))
+        DictWriter.writerow(self, header)
+
     @classmethod
     def from_schema(cls, schema, name=None):
         return type(
