@@ -5,6 +5,12 @@ csvalidate
 csvalidate is a minimal library for reading from and writing to csv with an
 added layer of validation
 
+Status
+######
+
+Even though csvalidate doesn't get much work, it is maintained. Don't hesitate
+to open issues or pull requests.
+
 Get Started
 ###########
 
