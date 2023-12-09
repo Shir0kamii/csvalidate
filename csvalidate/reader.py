@@ -9,10 +9,7 @@ class ValidatedReader(DictReader):
     def __next__(self):
         obj = DictReader.__next__(self)
         if self.schema:
-            data, errors = self.schema.load(obj)
-            if errors:
-                raise ValidationError(errors, data=data)
-            obj = data
+            obj = self.schema.load(obj)
         return obj
 
     def next(self):

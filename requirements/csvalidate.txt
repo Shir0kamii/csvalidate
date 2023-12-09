@@ -1,1 +1,1 @@
-marshmallow==2.15.1
+marshmallow==3.20.1

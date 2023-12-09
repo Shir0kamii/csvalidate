@@ -24,6 +24,9 @@ setup(
     download_url="https://github.com/Shir0kamii/csvalidate/tags",
     platforms="any",
     packages=["csvalidate"],
+    install_requires=[
+        "marshmallow",
+    ],
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",

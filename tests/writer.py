@@ -58,7 +58,7 @@ def test_correct_output(validated_writer):
 
 
 def test_exception_bad_id(validated_writer):
-    with pytest.raises(ValidationError):
+    with pytest.raises(ValueError):
         validated_writer.writerow({"id": "WHAT", "name": "Life"})
 
 

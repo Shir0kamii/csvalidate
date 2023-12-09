@@ -13,12 +13,7 @@ class ValidatedWriter(DictWriter):
 
     def writerow(self, rowdict):
         if self.schema:
-            data, errors = self.schema.dump(rowdict)
-            if errors:
-                if any(k != v for k, v in rowdict.items()):
-                    raise ValidationError(errors, data=data)
-            else:
-                rowdict = data
+            rowdict = self.schema.dump(rowdict)
         return DictWriter.writerow(self, rowdict)
 
     def writeheader(self):
